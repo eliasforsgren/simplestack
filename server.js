@@ -1,14 +1,10 @@
 const express = require('express');
 const app = express();
-const path = require('path');
-const routes = require('./routes');
+const port = 3000;
 
-// Serve static files
+// Serve static files from the 'public' directory
 app.use(express.static('public'));
 
-// Use routes from routes.js
-app.use('/', routes);
-
-// Render listens on the environment PORT or 3000 locally
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`✅ Server running on http://localhost:${PORT}`));
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
