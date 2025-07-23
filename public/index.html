@@ -1,53 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Forestflow 2.0</title>
-
-  <!-- Tailwind CSS -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Supabase Auth + Messages</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Mapbox CSS & JS -->
-  <link href="https://api.mapbox.com/mapbox-gl-js/v3.13.0/mapbox-gl.css" rel="stylesheet" />
-  <script src="https://api.mapbox.com/mapbox-gl-js/v3.13.0/mapbox-gl.js"></script>
-
-  <style>
-    #map {
-      width: 100%;
-      height: 100vh; /* Full height minus header */
-    }
-  </style>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
-<body class="bg-gray-100 text-gray-900">
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
 
-  <!-- Map Container -->
-  <div id="map"></div>
+  <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
 
-  <!-- Script -->
+    <input id="email" type="email" placeholder="Email" class="border p-2 rounded w-full mb-3" />
+    <input id="password" type="password" placeholder="Password" class="border p-2 rounded w-full mb-4" />
+
+    <button id="login-btn" class="bg-blue-500 hover:bg-blue-600 text-white w-full py-2 rounded">Login</button>
+
+    <button id="logout-btn" class="bg-red-500 hover:bg-red-600 text-white w-full py-2 rounded mt-3 hidden">Logout</button>
+
+    <p id="status" class="mt-4 text-center text-gray-600"></p>
+
+    <div id="app" class="mt-6 hidden">
+      <textarea id="message" placeholder="Type your message..." class="border p-2 rounded w-full mb-2"></textarea>
+      <button id="add-message" class="bg-purple-500 hover:bg-purple-600 text-white w-full py-2 rounded mb-3">Add Message</button>
+      <button id="get-messages" class="bg-green-500 hover:bg-green-600 text-white w-full py-2 rounded">Get My Messages</button>
+      <pre id="output" class="bg-gray-100 p-2 mt-4 rounded"></pre>
+    </div>
+  </div>
+
   <script>
-    mapboxgl.accessToken = 'pk.eyJ1Ijoibm9ydGh3aWxsIiwiYSI6ImNsdjV0ZjF4NTA1MWIyanFlMmVwdnpya2QifQ.8gyvd-ui_MZtXtvzvPhy1g'; // Replace with your token
+    const SUPABASE_URL = 'https://uklnkcfkanfwzgxzivht.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVrbG5rY2ZrYW5md3pneHppdmh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMyNzM3NjcsImV4cCI6MjA2ODg0OTc2N30.0tWhKVB9OXDupq0YMHgFGLHgq-FrWyKTOM3ezYyYFuM'; // Replace with your anon key
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11', // Map style
-      center: [18.063240, 59.334591], // Stockholm
-      zoom: 9
+    async function showAppUI() {
+      $('#app').removeClass('hidden');
+      $('#logout-btn').removeClass('hidden');
+    }
+
+    $('#login-btn').click(async function () {
+      const email = $('#email').val();
+      const password = $('#password').val();
+      $('#status').text('Logging in...');
+
+      const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+
+      if (error) {
+        $('#status').text('Error: ' + error.message);
+      } else {
+        $('#status').text('Logged in as ' + data.user.email);
+        localStorage.setItem('supabase_token', data.session.access_token);
+        showAppUI();
+      }
     });
 
-    // Add navigation controls
-    map.addControl(new mapboxgl.NavigationControl());
+    $('#logout-btn').click(async function () {
+      await supabaseClient.auth.signOut();
+      localStorage.removeItem('supabase_token');
+      $('#status').text('Logged out');
+      $('#app').addClass('hidden');
+      $('#logout-btn').addClass('hidden');
+    });
 
-    // Add a marker with a popup
-    const marker = new mapboxgl.Marker({ color: 'red' })
-      .setLngLat([18.063240, 59.334591])
-      .setPopup(new mapboxgl.Popup().setHTML(`
-        <div class="p-2">
-          <h3 class="font-bold text-lg">Stockholm</h3>
-          <p class="text-gray-600">Hello from Mapbox!</p>
-        </div>
-      `))
-      .addTo(map);
+    $('#add-message').click(async function () {
+      const message = $('#message').val();
+      const user = (await supabaseClient.auth.getUser()).data.user;
+      
+      const { data, error } = await supabaseClient
+        .from('messages')
+        .insert([{ user_id: user.id, content: message }]);
+
+      if (error) {
+        $('#output').text('Error: ' + error.message);
+      } else {
+        $('#output').text('Inserted: ' + JSON.stringify(data, null, 2));
+      }
+    });
+
+    $('#get-messages').click(async function () {
+      const { data, error } = await supabaseClient
+        .from('messages')
+        .select('*');
+
+      if (error) {
+        $('#output').text('Error: ' + error.message);
+      } else {
+        $('#output').text(JSON.stringify(data, null, 2));
+      }
+    });
   </script>
 </body>
 </html>
