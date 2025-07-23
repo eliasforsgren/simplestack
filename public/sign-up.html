@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registrera dig – Northsight</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-white via-gray-50 to-gray-100 flex items-center justify-center p-4">
+
+<div class="w-full max-w-lg">
+  <!-- Header -->
+  <div class="text-center mb-8">
+    <a href="/" class="inline-flex items-center text-gray-500 hover:text-gray-900 transition mb-6">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Tillbaka till startsidan
+    </a>
+    <h1 class="text-3xl font-bold mb-2">Skapa ditt konto</h1>
+    <p class="text-gray-500">Registrera dig för att komma igång med Northsight</p>
+  </div>
+
+  <!-- Sign-Up Card -->
+  <div class="bg-white border-2 rounded-lg shadow p-8">
+    <h2 class="text-xl font-semibold text-center mb-2">Registrera dig</h2>
+    <p class="text-center text-gray-500 mb-6">Ange dina uppgifter för att skapa ditt konto</p>
+
+    <form id="signUpForm" class="space-y-4">
+      <!-- Name -->
+      <div class="grid grid-cols-2 gap-4">
+        <input type="text" name="firstName" placeholder="Förnamn" class="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <input type="text" name="lastName" placeholder="Efternamn" class="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+
+      <!-- Email -->
+      <input type="email" name="email" placeholder="E-post" class="w-full border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+      <!-- Company Info -->
+      <div class="grid grid-cols-2 gap-4">
+        <input type="text" name="companyName" placeholder="Företagsnamn" class="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <input type="text" name="orgNumber" placeholder="Organisationsnummer" class="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+
+      <!-- Fiscal Year -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Räkenskapsår</label>
+        <div class="grid grid-cols-2 gap-4">
+          <input type="date" name="startDate" class="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <input type="date" name="endDate" class="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="relative">
+        <input type="password" id="password" name="password" placeholder="Skapa ett lösenord" class="w-full border rounded px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <button type="button" id="togglePassword" class="absolute right-3 top-3 text-gray-400 hover:text-gray-600">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="relative">
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Bekräfta lösenord" class="w-full border rounded px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+
+      <!-- Terms -->
+      <div class="flex items-center space-x-2">
+        <input type="checkbox" id="terms" class="rounded border-gray-300" />
+        <label for="terms" class="text-sm">Jag accepterar
+          <a href="/terms" class="text-blue-600 hover:underline">användarvillkoren</a> och
+          <a href="/privacy" class="text-blue-600 hover:underline">sekretesspolicyn</a>.
+        </label>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700 transition">
+        Skapa konto
+      </button>
+    </form>
+
+    <div class="mt-6 text-center text-sm">
+      Har du redan ett konto? <a href="/sign-in" class="text-blue-600 hover:underline">Logga in</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="mt-8 text-center text-gray-500 text-sm">
+    <div class="flex items-center justify-center space-x-6">
+      <a href="/privacy" class="hover:text-gray-800">Sekretesspolicy</a>
+      <a href="/terms" class="hover:text-gray-800">Användarvillkor</a>
+      <a href="/support" class="hover:text-gray-800">Support</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

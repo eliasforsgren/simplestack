@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Northsight – Smarta Bokföring</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-white via-gray-50 to-gray-100">
+
+  <!-- HEADER -->
+  <header class="border-b bg-white/95 backdrop-blur">
+    <div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-4">
+      <span class="font-bold text-xl">Northsight</span>
+      <nav class="hidden md:flex items-center space-x-6">
+        <a href="/sign-in" class="px-4 py-2 border rounded hover:bg-gray-100">Logga in</a>
+        <a href="/sign-up" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Kom igång</a>
+      </nav>
+      <nav class="flex md:hidden items-center space-x-2">
+        <a href="/sign-in" class="px-3 py-2 border rounded text-sm">Logga in</a>
+        <a href="/sign-up" class="px-3 py-2 bg-blue-600 text-white rounded text-sm">Kom igång</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative max-w-7xl mx-auto px-4 py-20 text-center">
+    <!-- Grid Background -->
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,#ccc_1px,transparent_1px),linear-gradient(to_bottom,#ccc_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+    </div>
+
+    <!-- Badge -->
+    <span class="inline-flex items-center px-3 py-1 rounded-full bg-gray-200 text-gray-700 mb-6 relative z-10 text-sm">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+      AI-Driven Bokföring
+    </span>
+
+    <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-500 bg-clip-text text-transparent">
+      Framtidens <br>
+      <span class="bg-gradient-to-r from-blue-500 to-blue-400 bg-clip-text text-transparent">Smarta Bokföring</span>
+    </h1>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
+      <a href="/sign-up" class="px-8 py-4 bg-blue-600 text-white text-lg rounded-lg hover:bg-blue-700 flex items-center justify-center">
+        Starta gratis provperiod
+        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm mt-4">
+      Ingen kreditkort krävs • 14 dagars gratis provperiod • Avsluta när som helst
+    </p>
+  </section>
+
+ <!-- PRICING SECTION -->
+<section class="bg-gray-100 py-20">
+  <div class="max-w-7xl mx-auto px-4">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <span class="inline-block px-3 py-1 bg-gray-200 rounded-full text-gray-700 text-sm mb-4">Priser</span>
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">Välj rätt plan för dig</h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        Välj en prisvärd plan som passar ditt företags behov för bokföring och fakturering.
+      </p>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="grid md:grid-cols-4 gap-8">
+      
+      <!-- Free Plan -->
+      <div class="bg-white border rounded-lg shadow p-8 flex flex-col">
+        <h3 class="text-lg font-semibold text-green-600 mb-2">Gratis</h3>
+        <div class="text-5xl font-bold mb-4">0 kr<span class="text-gray-500 text-lg">/månad</span></div>
+        <p class="text-gray-500 mb-6">Perfekt för att komma igång med grundläggande fakturering.</p>
+        <ul class="space-y-3 mb-6 text-gray-700">
+          <li>✔ Gratis fakturamallar</li>
+          <li>✔ Lägg till kunder</li>
+          <li>✔ Enkel statistik</li>
+        </ul>
+        <!-- Button stays at bottom -->
+        <a href="/sign-up" class="mt-auto block border border-green-600 text-green-600 rounded py-2 text-center hover:bg-green-50">
+          Kom igång gratis
+        </a>
+      </div>
+
+      <!-- Standard Plan -->
+      <div class="bg-white border rounded-lg shadow p-8 flex flex-col">
+        <h3 class="text-lg font-semibold text-blue-600 mb-2">Standard</h3>
+        <div class="text-5xl font-bold mb-4">199 kr<span class="text-gray-500 text-lg">/månad</span></div>
+        <p class="text-gray-500 mb-6">Bokföring och fakturering med AI-assistans.</p>
+        <ul class="space-y-3 mb-6 text-gray-700">
+          <li>✔ Bokföring</li>
+          <li>✔ Fakturering</li>
+          <li>✔ AI-assistans</li>
+        </ul>
+        <a href="/sign-up" class="mt-auto block border border-blue-600 text-blue-600 rounded py-2 text-center hover:bg-blue-50">
+          Kom igång idag
+        </a>
+      </div>
+
+      <!-- Premium Plan -->
+      <div class="bg-gray-900 text-white border border-purple-600 rounded-lg shadow-lg p-8 flex flex-col relative">
+        <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white px-3 py-1 rounded-full text-xs">Populärast</span>
+        <h3 class="text-lg font-semibold text-purple-400 mb-2">Premium</h3>
+        <div class="text-5xl font-bold mb-4">299 kr<span class="text-gray-400 text-lg">/månad</span></div>
+        <p class="text-gray-300 mb-6">Komplett lösning med digital inlämning.</p>
+        <ul class="space-y-3 mb-6">
+          <li>✔ Bokföring & Fakturering</li>
+          <li>✔ AI-assistans</li>
+          <li>✔ Digital årsredovisning</li>
+          <li>✔ Digital momsredovisning</li>
+          <li>✔ Deklaration</li>
+        </ul>
+        <a href="public/sign-up" class="mt-auto block bg-purple-600 text-white rounded py-2 text-center hover:bg-purple-700">
+          Kom igång idag
+        </a>
+      </div>
+
+      <!-- Custom Plan -->
+      <div class="bg-white border rounded-lg shadow p-8 flex flex-col">
+        <h3 class="text-lg font-semibold text-orange-600 mb-2">Custom</h3>
+        <div class="text-2xl font-bold mb-2">Kontakta oss</div>
+        <p class="text-gray-500 mb-6">För stora företag och specifika behov.</p>
+        <ul class="space-y-3 mb-6 text-gray-700">
+          <li>✔ Alla Premium-funktioner</li>
+          <li>✔ Dedikerad support</li>
+          <li>✔ API-integrationer</li>
+          <li>✔ Anpassade rapporter</li>
+        </ul>
+        <a href="#" class="mt-auto block border border-orange-600 text-orange-600 rounded py-2 text-center hover:bg-orange-50">
+          Kontakta oss
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- CTA -->
+  <section class="max-w-7xl mx-auto px-4 py-20 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">Redo att förenkla din bokföring?</h2>
+    <a href="/sign-up" class="inline-flex items-center bg-blue-600 text-white px-8 py-4 rounded-lg text-lg hover:bg-blue-700">
+      Starta gratis provperiod
+      <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t bg-gray-50 py-8">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-500 text-sm">© 2025 Northsight. Alla rättigheter förbehållna.</p>
+      <div class="flex space-x-4 mt-4 md:mt-0">
+        <a href="#" class="text-gray-500 hover:text-gray-800">Villkor</a>
+        <a href="#" class="text-gray-500 hover:text-gray-800">Sekretess</a>
+        <a href="#" class="text-gray-500 hover:text-gray-800">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
