@@ -1,21 +1,28 @@
 const express = require('express');
-const app = express();
 const path = require('path');
 
-// Serve all static files from /public
-app.use(express.static('.'));
+const app = express();
+
+// Serve all static files from the "public" folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes for specific pages
 app.get('/', (req, res) => {
-  res.sendFile(path.resolve('public/landing.html'));
+  res.sendFile(path.join(__dirname, 'public', 'landing.html'));
 });
 
 app.get('/sign-in', (req, res) => {
-  res.sendFile(path.resolve('public/sign-in.html'));
+  res.sendFile(path.join(__dirname, 'public', 'sign-in.html'));
 });
 
 app.get('/sign-up', (req, res) => {
-  res.sendFile(path.resolve('public/sign-up.html'))
-})
+  res.sendFile(path.join(__dirname, 'public', 'sign-up.html'));
+});
 
-app.listen(3000, () => console.log('✅ Server running on http://localhost:3000'));
+app.get('/dashboard', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+});
+
+// ✅ Use Render's assigned port OR 3000 locally
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));

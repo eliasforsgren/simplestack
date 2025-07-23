@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Northsight Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex bg-gray-100">
+  <!-- Sidebar -->
+  <aside class="w-64 bg-white border-r flex flex-col">
+    <!-- Header -->
+    <div class="p-4 border-b">
+      <span class="font-bold text-xl">Northsight</span>
+    </div>
+
+    <!-- Menu -->
+    <nav class="flex-1 p-4 space-y-2">
+      <p class="text-xs font-semibold text-gray-400 uppercase mb-3">Huvudmeny</p>
+      <a href="/dashboard" class="flex items-center px-3 py-2 rounded hover:bg-gray-100 text-gray-700">
+<svg class="pl-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-aarrow-down-icon lucide-a-arrow-down"><path d="M3.5 13h6"/><path d="m2 16 4.5-9 4.5 9"/><path d="M18 7v9"/><path d="m14 12 4 4 4-4"/></svg>
+        Översikt
+      </a>
+      <a href="/reports" class="flex items-center px-3 py-2 rounded hover:bg-gray-100 text-gray-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6h13M9 17H5a2 2 0 01-2-2v-4a2 2 0 012-2h4v8z"/></svg>
+        Rapporter
+      </a>
+      <a href="/bank" class="flex items-center px-3 py-2 rounded hover:bg-gray-100 text-gray-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.104 0 2-.672 2-1.5S13.104 5 12 5 10 5.672 10 6.5 10.896 8 12 8z"/></svg>
+        Bank
+      </a>
+      <a href="/invoice" class="flex items-center px-3 py-2 rounded hover:bg-gray-100 text-gray-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h10m-6 8h6a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2"/></svg>
+        Fakturering
+      </a>
+      <!-- Add more links as needed -->
+    </nav>
+
+    <!-- Footer -->
+    <div class="border-t p-4">
+      <p class="text-sm text-gray-500 mb-3">Patch 1.0</p>
+      <div class="flex items-center space-x-3">
+        <img src="https://via.placeholder.com/40" class="h-10 w-10 rounded-full" alt="Avatar" />
+        <div>
+          <p class="font-medium">Northwill AB</p>
+          <a href="/logout" class="text-xs text-blue-600 hover:underline">Logga ut</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-6">
+    <h1 class="text-2xl font-bold mb-4">Dashboard</h1>
+    <p>Här visas ditt innehåll...</p>
+  </main>
+</body>
+</html>
